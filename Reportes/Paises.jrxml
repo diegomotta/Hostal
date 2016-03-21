@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Paises" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44b12a9d-bdac-45cf-ada5-17f0012f8867">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select nombre from pais]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="4b379b02-63a8-4aa3-910f-993399dd0429" x="124" y="0" width="421" height="79"/>
+			</rectangle>
+			<image>
+				<reportElement uuid="bffcbc04-b50d-4dc2-a8e9-899bf6cc9208" x="0" y="0" width="114" height="79"/>
+				<imageExpression><![CDATA["C:\\Users\\Lukas\\Desktop\\slyfm.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="31c4a522-8cfe-495d-b93a-89a3f2396fb4" x="177" y="22" width="310" height="38"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="20" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Cualquiera]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="be36abfe-eb81-4608-ae72-dc8c5e1a449b" x="14" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d70148a3-bcbf-43ab-8090-017f397be8da" x="14" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

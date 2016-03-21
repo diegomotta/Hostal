@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="LN.Alquileres.Habitacion">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="numero"/>
+    <property name="estado_ocupacion"/>
+    <property name="estado_limpieza"/>
+    <property name="habilitado"/>
+  </class>
+  <class name="LN.Alquileres.Hospedaje_Habitacion">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Persona.Visitante.Visitante" name="unVisitante"/>
+    <many-to-one class="LN.Alquileres.Habitacion" name="unaHabitacion"/>
+    <many-to-one class="LN.Alquileres.Tarifa_Habitacion" name="unaTarifa_Habitacion"/>
+    <list name="movimientos">
+      <key column="id_Hospedaje_lista_movimientos"/>
+      <list-index column="index_lista_Hospedaje"/>
+      <one-to-many class="LN.Alquileres.Movimiento_Hospedaje"/>
+    </list>
+    <property name="entrada"/>
+    <property name="salida"/>
+    <property name="descuento"/>
+    <property name="check_out"/>
+  </class>
+  <class name="LN.Alquileres.Movimiento_Hospedaje">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="monto"/>
+    <property name="fecha_movimiento"/>
+    <many-to-one class="LN.Alquileres.Hospedaje_Habitacion" name="hospedajePadre"/>
+    <property name="tipo"/>
+  </class>
+  <class name="LN.Alquileres.Pileta">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="precio_invitado"/>
+    <property name="cantidad_invitados"/>
+    <property name="habilitada"/>
+    <list name="registros">
+      <key column="id_Pileta_lista_registros"/>
+      <list-index column="index_lista_Pileta"/>
+      <one-to-many class="LN.Alquileres.Registro_Pileta"/>
+    </list>
+  </class>
+  <class name="LN.Alquileres.Registro_Pileta">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Persona.Visitante.Afiliado" name="unAfiliado"/>
+    <property name="total_afiliados"/>
+    <property name="total_entradas"/>
+    <property name="monto_entradas"/>
+    <property name="fecha_entrada"/>
+  </class>
+  <class name="LN.Alquileres.Tarifa_Habitacion">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="tipo"/>
+    <property name="precio"/>
+  </class>
+  <class name="LN.Articulos.Area">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="tipo"/>
+  </class>
+  <class name="LN.Articulos.Articulo">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <many-to-one class="LN.Articulos.Unidad_de_Medida" name="unidad"/>
+    <many-to-one class="LN.Articulos.Area" name="area_aplicacion"/>
+    <property name="cuantificacion"/>
+    <joined-subclass name="LN.Articulos.Articulo_Dinamico">
+      <key column="id"/>
+    </joined-subclass>
+    <joined-subclass name="LN.Articulos.Articulo_Estatico">
+      <key column="id"/>
+      <property name="precio"/>
+    </joined-subclass>
+  </class>
+  <class name="LN.Articulos.Unidad_de_Medida">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <property name="abreviacion"/>
+  </class>
+  <class name="LN.Domicilios.Direccion">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Domicilios.Pais" name="pais"/>
+    <many-to-one class="LN.Domicilios.Provincia" name="provincia"/>
+    <many-to-one class="LN.Domicilios.Localidad" name="localidad"/>
+    <property name="domicilio"/>
+  </class>
+  <class name="LN.Domicilios.Localidad">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Domicilios.Provincia" name="provinciaPadre"/>
+    <property name="nombre"/>
+  </class>
+  <class name="LN.Domicilios.Pais">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <many-to-one class="LN.Persona.Tipo_Documento" name="tipoDocumento"/>
+    <list name="provincias">
+      <key column="id_Pais_lista_provincias"/>
+      <list-index column="index_lista_Pais"/>
+      <one-to-many class="LN.Domicilios.Provincia"/>
+    </list>
+  </class>
+  <class name="LN.Domicilios.Provincia">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Domicilios.Pais" name="paisPadre"/>
+    <property name="nombre"/>
+    <list name="localidades">
+      <key column="id_Provincia_lista_localidades"/>
+      <list-index column="index_lista_Provincia"/>
+      <one-to-many class="LN.Domicilios.Localidad"/>
+    </list>
+  </class>
+  <class name="LN.Persona.Estado_Civil">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="estado"/>
+  </class>
+  <class name="LN.Persona.Persona">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <property name="apellido"/>
+    <property name="dni"/>
+    <property name="fnac"/>
+    <many-to-one class="LN.Persona.Sexo" name="sexo"/>
+    <many-to-one class="LN.Domicilios.Direccion" name="direccion"/>
+    <joined-subclass name="LN.Persona.Usuario.Usuario">
+      <key column="id"/>
+      <property name="pasword"/>
+      <property name="usserame"/>
+      <property name="creadoDia"/>
+      <property name="creadoHora"/>
+      <property name="telefono"/>
+      <property name="rol"/>
+      <many-to-one class="LN.Persona.Estado_Civil" name="estado_civil"/>
+      <property name="e_mail"/>
+      <joined-subclass name="LN.Persona.Usuario.Administrador">
+        <key column="id"/>
+      </joined-subclass>
+      <joined-subclass name="LN.Persona.Usuario.Operador">
+        <key column="id"/>
+      </joined-subclass>
+    </joined-subclass>
+    <joined-subclass name="LN.Persona.Visitante.Visitante">
+      <key column="id"/>
+      <many-to-one class="LN.Persona.Estado_Civil" name="estado_civil"/>
+      <property name="telefono"/>
+      <property name="e_mail"/>
+      <property name="motivo_visita"/>
+      <property name="ocupacion"/>
+      <property name="condicion_af"/>
+      <joined-subclass name="LN.Persona.Visitante.Afiliado">
+        <key column="id"/>
+        <property name="numero_carnet"/>
+      </joined-subclass>
+      <joined-subclass name="LN.Persona.Visitante.Tercero">
+        <key column="id"/>
+      </joined-subclass>
+    </joined-subclass>
+  </class>
+  <class name="LN.Persona.Sexo">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="sexo"/>
+  </class>
+  <class name="LN.Persona.Tipo_Documento">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="tipo"/>
+  </class>
+  <class name="LN.Caja.Caja">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <list name="lotes">
+      <key column="id_Caja_lista_lotes"/>
+      <list-index column="index_lista_Caja"/>
+      <one-to-many class="LN.Caja.Lote"/>
+    </list>
+    <list name="conceptos">
+      <key column="id_Caja_lista_conceptos"/>
+      <list-index column="index_lista_Caja"/>
+      <one-to-many class="LN.Caja.Conceptos"/>
+    </list>
+  </class>
+  <class name="LN.Caja.Conceptos">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="tipo"/>
+    <property name="detalle"/>
+  </class>
+  <class name="LN.Articulos.Faltante">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="LN.Articulos.Articulo" name="unArticulo"/>
+    <property name="fecha"/>
+    <many-to-one class="LN.Articulos.Area" name="areaUtilizacion"/>
+    <property name="costoEtimado"/>
+    <property name="causa"/>
+  </class>
+  <class name="LN.Varios.Hosteria">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="nombre"/>
+    <property name="telefono"/>
+    <list name="personas">
+      <key column="id_Hosteria_lista_personas"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Persona"/>
+    </list>
+    <list name="paises">
+      <key column="id_Hosteria_lista_paises"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Domicilios.Pais"/>
+    </list>
+    <list name="direcciones">
+      <key column="id_Hosteria_lista_direcciones"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Domicilios.Direccion"/>
+    </list>
+    <list name="visitantes">
+      <key column="id_Hosteria_lista_visitantes"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Visitante.Visitante"/>
+    </list>
+    <list name="estados_civiles">
+      <key column="id_Hosteria_lista_estados_civiles"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Estado_Civil"/>
+    </list>
+    <list name="sexos">
+      <key column="id_Hosteria_lista_sexos"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Sexo"/>
+    </list>
+    <list name="documentos">
+      <key column="id_Hosteria_lista_documentos"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Tipo_Documento"/>
+    </list>
+    <list name="articulos">
+      <key column="id_Hosteria_lista_articulos"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Articulos.Articulo"/>
+    </list>
+    <list name="unidadesDeMedida">
+      <key column="id_Hosteria_lista_unidadesDeMedida"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Articulos.Unidad_de_Medida"/>
+    </list>
+    <list name="areas">
+      <key column="id_Hosteria_lista_areas"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Articulos.Area"/>
+    </list>
+    <list name="usuarios">
+      <key column="id_Hosteria_lista_usuarios"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Persona.Usuario.Usuario"/>
+    </list>
+    <list name="alquileresHabitacion">
+      <key column="id_Hosteria_lista_alquileres"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Alquileres.Hospedaje_Habitacion"/>
+    </list>
+    <list name="habitaciones">
+      <key column="id_Hosteria_lista_habitaciones"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Alquileres.Habitacion"/>
+    </list>
+    <list name="tarifas">
+      <key column="id_Hosteria_lista_tarifas"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Alquileres.Tarifa_Habitacion"/>
+    </list>
+    <list name="reservas">
+      <key column="id_Hosteria_lista_reservas"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Alquileres.Reserva_Habitacion"/>
+    </list>
+    <list name="faltantes">
+      <key column="id_Hosteria_lista_faltantes"/>
+      <list-index column="index_lista_Hosteria"/>
+      <one-to-many class="LN.Articulos.Faltante"/>
+    </list>
+    <many-to-one class="LN.Caja.Caja" name="cajaPrincipal"/>
+    <many-to-one class="LN.Alquileres.Pileta" name="pileta"/>
+  </class>
+  <class name="LN.Caja.Lote">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="fechaLote"/>
+    <property name="saldoInicial"/>
+    <property name="saldoFinal"/>
+    <property name="horaApertura"/>
+    <property name="horaCierre"/>
+    <property name="totalRetirado"/>
+    <list name="movimientos">
+      <key column="id_Lote_lista_movimientos"/>
+      <list-index column="index_lista_Lote"/>
+      <one-to-many class="LN.Caja.Movimiento"/>
+    </list>
+    <property name="cerrado"/>
+  </class>
+  <class name="LN.Caja.Movimiento">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="fecha_dia"/>
+    <property name="hora_mov"/>
+    <property name="importe"/>
+    <property name="salida"/>
+    <property name="tipo"/>
+    <property name="concepto"/>
+  </class>
+  <class name="LN.Alquileres.Reserva_Habitacion">
+    <id name="id">
+      <generator class="increment"/>
+    </id>
+    <property name="unVisitante"/>
+    <property name="desdeFecha"/>
+    <property name="hastaFecha"/>
+    <property name="cantidad_de_Noches"/>
+    <many-to-one class="LN.Alquileres.Habitacion" name="deHabitacion"/>
+    <many-to-one class="LN.Alquileres.Tarifa_Habitacion" name="tipo"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a46d6ccb-e593-4782-80e7-fb71378a686a">
+	<property name="ireport.zoom" value="2.3579476910000032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="LN.Varios.Foto"/>
+	<parameter name="pa" class="java.lang.String"/>
+	<parameter name="pcia" class="java.lang.String"/>
+	<parameter name="calle" class="java.lang.String"/>
+	<parameter name="ciud" class="java.lang.String"/>
+	<parameter name="us" class="java.lang.String"/>
+	<parameter name="nomb" class="java.lang.String"/>
+	<parameter name="cant" class="java.lang.Integer"/>
+	<field name="unArticulo" class="LN.Articulos.Articulo"/>
+	<field name="unPrecio" class="java.lang.Double"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="fecha" class="java.util.Date"/>
+	<variable name="costo" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="7f7dac8a-b31f-4fe2-a226-874cbc82b353" x="0" y="0" width="555" height="79"/>
+			</rectangle>
+			<image>
+				<reportElement uuid="f564463c-9c09-455e-8813-f820c2243857" x="12" y="5" width="74" height="69"/>
+				<imageExpression><![CDATA[$P{logo}.getImage()]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="01c28ac3-107e-4a61-988f-93ba09dd82f2" x="110" y="29" width="284" height="30"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Compras Registradas]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6dd9af7f-9e90-46db-958c-1d0ef7e8108d" x="399" y="6" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{nomb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="610d5656-dd2d-46cb-9abf-1d2b8c37202b" x="399" y="29" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{calle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="07fdfed5-82ea-41a3-a12b-31bc2fe5ffe5" x="399" y="52" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{ciud} +", "+$P{pcia}+", "+$P{pa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="59c1a03a-19d3-45f5-af06-940d675d00a3" x="0" y="8" width="555" height="25" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="623c094c-c85e-4e1b-b221-764bbdf77676" x="455" y="13" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a758d6ad-2c3f-4cd1-918b-e6c81609cf1b" x="9" y="13" width="54" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cdc2bf8e-249a-4f8a-8648-54785fc7ddf7" x="64" y="13" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{us}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="36693952-5e02-4959-8e67-d2945c9e832e" x="0" y="12" width="555" height="29"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="412" y="16" width="64" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="199" y="16" width="76" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio Unit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f29ab061-85c7-4735-9e40-e5ff7210320b" x="284" y="17" width="120" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Costo Aproximado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="36" y="17" width="124" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Artículo Adquirido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="497" y="16" width="42" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0f7643c0-c18d-4e6e-aa14-e74f1844a58b" x="195" y="12" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="aab850d3-116d-4528-8037-2c9151aa8254" x="282" y="12" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="407" y="12" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="bed0c321-6391-4896-b5f8-5ebe105dbdaf" x="480" y="12" width="1" height="29"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement uuid="b7d82210-fe35-4ec1-9a01-04aef7a5ec71" x="0" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="c5945af2-868e-4c01-b0db-cd527afe14bc" x="554" y="0" width="1" height="30"/>
+			</line>
+			<textField>
+				<reportElement uuid="8f653ba5-12e3-485b-8aba-596e6d743c9c" x="3" y="1" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unArticulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4cc5d03e-cf16-4ff5-a0d0-f4cadd48a302" x="199" y="1" width="76" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["$ " + $F{unPrecio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="475e5e34-dfde-452e-ab01-a601497b8791" x="413" y="1" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9802ca64-9445-40fb-ad7d-ddc5504ae806" x="486" y="1" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="da3720a1-5103-4e5d-9579-4c54a9bf4ded" x="304" y="1" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["$ " + ($F{unPrecio}*$F{cantidad})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="480" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="407" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="282" y="0" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="195" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="3" y="29" width="551" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="6c3985aa-be4b-405c-b70c-f760f8347fa9" x="434" y="24" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="7424c80b-8e04-41a6-9b84-fd6d86ba8bb8" x="514" y="24" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="29" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="435b516f-9ad1-4a34-9b17-f0028105bdb6" x="0" y="3" width="554" height="26" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ce242d2e-d83f-426c-af48-193b6cbd1810" x="5" y="7" width="144" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cantidad de Registros:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="49e8be03-fcec-49d4-bf21-08ff659fa84c" x="149" y="8" width="63" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cant}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="0" y="0" width="555" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

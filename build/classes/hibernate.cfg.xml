@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Verydis</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">verydis1750</property>
+    <property name="show_sql">true </property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="connection.pool_size">1</property>
+    <!--<property name="query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property> 
+    
+        <mapping resource="hibernate.hbm.xml"/>-->
+        <mapping class="LN.Alquileres.Habitacion"/>
+        <mapping class="LN.Alquileres.Hospedaje"/>
+        <mapping class="LN.Alquileres.Hospedaje_Habitacion"/>
+        <mapping class="LN.Alquileres.Hospedaje_Salon"/>
+        <mapping class="LN.Alquileres.Movimiento_Hospedaje"/>
+        <mapping class="LN.Alquileres.Pileta"/>
+        <mapping class="LN.Alquileres.Registro_Pileta"/>
+        <mapping class="LN.Alquileres.Reserva_Habitacion"/>
+        <mapping class="LN.Alquileres.Reserva_Salon"/>
+        <mapping class="LN.Alquileres.Salon"/>
+        <mapping class="LN.Alquileres.Tarifa_Habitacion"/>
+        <mapping class="LN.Alquileres.Tarifa_Salon"/>
+        <mapping class="LN.Articulos.Area"/>
+        <mapping class="LN.Articulos.Articulo"/>
+        <mapping class="LN.Articulos.Articulo_Dinamico"/>
+        <mapping class="LN.Articulos.Articulo_Estatico"/>
+        <mapping class="LN.Articulos.Articulos_Adquiridos"/>
+        <mapping class="LN.Articulos.Compra"/>
+        <mapping class="LN.Articulos.Establecimiento"/>
+        <mapping class="LN.Articulos.Unidad_de_Medida"/>
+        <mapping class="LN.Articulos.Faltante"/>
+        <mapping class="LN.Domicilios.Direccion"/>
+        <mapping class="LN.Domicilios.Localidad"/>
+        <mapping class="LN.Domicilios.Pais"/>
+        <mapping class="LN.Domicilios.Provincia"/>
+        <mapping class="LN.Persona.Estado_Civil"/>
+        <mapping class="LN.Persona.Persona"/>
+        <mapping class="LN.Persona.Sexo"/>
+        <mapping class="LN.Persona.Tipo_Documento"/>
+        <mapping class="LN.Persona.Usuario.Permisos"/>
+        <mapping class="LN.Persona.Usuario.Rol"/>
+        <mapping class="LN.Persona.Usuario.Usuario"/>
+        <mapping class="LN.Persona.Visitante.Afiliado"/>
+        <mapping class="LN.Persona.Visitante.Tercero"/>
+        <mapping class="LN.Persona.Visitante.Visitante"/>
+        <mapping class="LN.Caja.Caja"/>
+        <mapping class="LN.Caja.Conceptos"/>
+        <mapping class="LN.Caja.Cupon"/>
+        <mapping class="LN.Caja.Lote"/>
+        <mapping class="LN.Caja.Movimiento"/>
+        <mapping class="LN.Caja.Tarjeta"/>
+        <mapping class="LN.Varios.Hosteria"/>
+        <mapping class="LN.Varios.Aviso"/>
+        <mapping class="LN.Varios.Foto"/>
+        <mapping class="LN.Varios.Numero"/>
+        <mapping class="LN.Varios.Maestro"/>
+        <mapping class="Log_Auditoria.Entidad_Revisada"/>
+        <mapping class="Log_Auditoria.Auditoria_Operacional"/>
+        
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-delete"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-update"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-remove"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-recreate"/>
+    </session-factory>
+</hibernate-configuration>

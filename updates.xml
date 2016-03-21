@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updateDescriptor baseUrl="">
+  <entry targetMediaFileId="23" updatableVersionMin="" updatableVersionMax="" fileName="HOSTIN_windows_1_0.exe" newVersion="1.0" newMediaFileId="23" fileSize="1627648" bundledJre="" archive="false">
+    <comment language="es" />
+  </entry>
+</updateDescriptor>
+

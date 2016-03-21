@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58423cde-69ec-478b-b7dd-88cae4c0fe70">
+	<property name="ireport.zoom" value="1.9487171000000025"/>
+	<property name="ireport.x" value="20"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="LN.Varios.Foto"/>
+	<field name="customTimestamp" class="java.lang.Long"/>
+	<field name="entityClassName" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String"/>
+	<field name="accion" class="java.lang.String"/>
+	<field name="momento" class="java.util.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="a8049ef1-4147-4d8e-b335-a25d439e4592" x="0" y="0" width="554" height="79"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="aeea81f5-07c9-459a-a6d3-ce690325e097" x="155" y="23" width="224" height="29"/>
+				<textElement>
+					<font fontName="Courier New" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Auditoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="65299c13-015e-4a96-801b-0dc3282edc4a" x="421" y="30" width="126" height="20"/>
+				<textElement/>
+				<text><![CDATA[Av. Primeros Colonos 1750]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e894d1b4-ccc6-4ef6-ab79-d98217466379" x="396" y="10" width="150" height="20"/>
+				<textElement/>
+				<text><![CDATA[Campo de Deportes Luz y fuerza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="574d8c0c-35b4-42c5-8062-476a7f56ca99" x="407" y="50" width="140" height="20"/>
+				<textElement/>
+				<text><![CDATA[Apóstoles, Misiones, Argentina]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="936b4d9a-1f7b-44ac-ba8a-b4e4ee2662a1" x="11" y="5" width="73" height="69"/>
+				<imageExpression><![CDATA[$P{logo}.getImage()]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="d03f4cd6-ce34-4904-ba2e-ef5c5ae87f4f" x="1" y="11" width="554" height="24" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="da804168-a5ce-4320-9941-8913cbea0895" x="455" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="c3db8d5d-40c9-4485-b8b7-d2c4e149bcde" x="0" y="0" width="555" height="22"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="374ac002-d719-4fb1-b1f7-ef6139ad4748" x="1" y="0" width="122" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Número de Revisión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bdfd401-e88e-4022-82ad-c17e1e06bd4c" x="136" y="0" width="76" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Acción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7f63ad8-6263-4bda-9c40-a59f12886bf9" x="232" y="0" width="96" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Clase Asociada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a61efaad-9741-4914-927f-0f93dae06888" x="349" y="0" width="87" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="78d50357-dea0-47b6-abfa-b38176c9aecd" x="455" y="2" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del Hecho]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="81c120a5-61d6-40e5-b561-97b2bd4f70ab" x="364" y="0" width="87" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3df4038-82ae-419e-953b-a29633a97dfe" x="232" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{entityClassName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="27c7f318-9cf2-45ae-950a-1f7e6e2dc424" x="146" y="0" width="66" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{accion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2ea3ee22-75d3-4112-a4b1-e3244b4b8ad6" x="468" y="0" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{momento}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f13bb724-1f8a-418d-bd32-a85f587d0a3c" x="212" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="6577c0e2-7102-4fc7-a3dd-b08c5af51cf5" x="121" y="0" width="1" height="25"/>
+			</line>
+			<textField>
+				<reportElement uuid="0e2e8997-d679-468b-bea3-88e43b695d1d" x="11" y="0" width="110" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{customTimestamp}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="4e431312-2038-4f9a-b711-30d7c59b493f" x="348" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="4e431312-2038-4f9a-b711-30d7c59b493f" x="454" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="6577c0e2-7102-4fc7-a3dd-b08c5af51cf5" x="0" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="4e431312-2038-4f9a-b711-30d7c59b493f" x="554" y="0" width="1" height="25"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="d03f4cd6-ce34-4904-ba2e-ef5c5ae87f4f" x="0" y="0" width="555" height="25" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement uuid="cedffdd3-9e55-4809-9533-2377de4c724d" x="1" y="0" width="554" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

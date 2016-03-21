@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7286ac8d-d387-4819-946a-7fc1615ee62f">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="log" class="java.lang.String"/>
+	<parameter name="logo" class="LN.Varios.Foto"/>
+	<parameter name="cant" class="java.lang.Integer"/>
+	<parameter name="ciud" class="java.lang.String"/>
+	<parameter name="pcia" class="java.lang.String"/>
+	<parameter name="calle" class="java.lang.String"/>
+	<parameter name="nomb" class="java.lang.String"/>
+	<parameter name="pa" class="java.lang.String"/>
+	<field name="unVisitante" class="LN.Persona.Visitante.Visitante"/>
+	<field name="ingreso" class="java.util.Date"/>
+	<field name="egreso" class="java.util.Date"/>
+	<field name="servicio" class="LN.Alquileres.Tarifa_Salon"/>
+	<field name="descuento" class="java.lang.Double"/>
+	<field name="elSalon" class="LN.Alquileres.Salon"/>
+	<variable name="totalDescuento" class="java.lang.String"/>
+	<variable name="dir" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="7f7dac8a-b31f-4fe2-a226-874cbc82b353" x="0" y="0" width="555" height="79"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="01c28ac3-107e-4a61-988f-93ba09dd82f2" x="116" y="19" width="261" height="30"/>
+				<textElement textAlignment="Center">
+					<font fontName="Courier New" size="20" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Alquiler]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="f564463c-9c09-455e-8813-f820c2243857" x="14" y="6" width="70" height="66"/>
+				<imageExpression><![CDATA[$P{logo}.getImage()]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="6dd9af7f-9e90-46db-958c-1d0ef7e8108d" x="403" y="6" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{nomb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="610d5656-dd2d-46cb-9abf-1d2b8c37202b" x="403" y="29" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{calle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="07fdfed5-82ea-41a3-a12b-31bc2fe5ffe5" x="403" y="52" width="140" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{ciud} +", "+$P{pcia}+", "+$P{pa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="59c1a03a-19d3-45f5-af06-940d675d00a3" x="0" y="9" width="553" height="25" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="623c094c-c85e-4e1b-b221-764bbdf77676" x="448" y="14" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a758d6ad-2c3f-4cd1-918b-e6c81609cf1b" x="6" y="12" width="54" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5e38e141-52ea-4c83-92b2-00fe4911ea2a" x="60" y="12" width="100" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="11" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{log}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="36693952-5e02-4959-8e67-d2945c9e832e" x="0" y="0" width="555" height="29"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="2" y="4" width="69" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nro. Salón]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f29ab061-85c7-4735-9e40-e5ff7210320b" x="288" y="4" width="138" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Huesped del Hospedaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="121" y="4" width="121" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="448" y="4" width="42" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Desde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecae4cc-aebc-4c99-b947-12b2c9be0ce9" x="503" y="4" width="40" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Hasta]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="5333b426-0d23-4d0b-aafd-c4d4f8c74276" x="77" y="0" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="8191dd79-06f9-4423-9e12-9ecfd3ce8e77" x="272" y="0" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="6baee635-3ac1-4d4c-8097-f3b5494697fd" x="439" y="0" width="1" height="29"/>
+			</line>
+			<line>
+				<reportElement uuid="53d8b3fd-6bbf-445b-b06f-6baa367c33f9" x="498" y="0" width="1" height="29"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0a4a6e81-45b2-4f78-995f-bc96f33b69d2" x="84" y="0" width="188" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{servicio}.getTipo()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e899b6e2-9fe4-4c6b-be01-f57ad9221b22" x="444" y="0" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bf51de01-07cd-4b86-8c30-bc8dc1d2df70" x="500" y="0" width="53" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{egreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="99f6bb71-0a18-48df-bb9a-8d70566d959c" x="282" y="0" width="157" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unVisitante}.getApellido() +" "+ $F{unVisitante}.getNombre()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="731bf084-dbe7-4853-9430-bec2c41815aa" x="4" y="0" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{elSalon}.getNumero()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="aab850d3-116d-4528-8037-2c9151aa8254" x="272" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="0f7643c0-c18d-4e6e-aa14-e74f1844a58b" x="77" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="554c4fab-c223-45c9-9498-08ddd34ad530" x="439" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="c5945af2-868e-4c01-b0db-cd527afe14bc" x="554" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="bed0c321-6391-4896-b5f8-5ebe105dbdaf" x="498" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="b7d82210-fe35-4ec1-9a01-04aef7a5ec71" x="0" y="0" width="1" height="25"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="435b516f-9ad1-4a34-9b17-f0028105bdb6" x="0" y="7" width="554" height="26" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ce242d2e-d83f-426c-af48-193b6cbd1810" x="5" y="11" width="135" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cantidad de Registros:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="49e8be03-fcec-49d4-bf21-08ff659fa84c" x="140" y="12" width="100" height="20"/>
+				<textElement>
+					<font fontName="Bell MT" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cant}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="e89a369e-61cd-42ec-93f4-34d99ad9502b" x="0" y="0" width="555" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
